@@ -1,2 +1,2 @@
 # intelligent-beds
-Diploma
+Diploma Project
