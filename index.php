@@ -23,6 +23,8 @@
       </ul>
     </div>
   </div>
+  <div class="introduction"></div>
+  <div class="search"></div>
 </body>
 
 </html>

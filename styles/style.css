@@ -7,7 +7,7 @@ html {
 
 .header {
   display: flex;
-  background-color: #495579;
+  background-color: #144272;
   align-items: center;
   justify-content: space-between;
   padding-left: 10px;
@@ -26,7 +26,7 @@ html {
 }
 
 .header a:hover {
-  color: #263159;
+  color: #2C74B3;
 }
 
 .header ul {
@@ -34,3 +34,7 @@ html {
   display: flex;
   gap: 15px;
 }
+
+.introduction {}
+
+.search {}
