@@ -23,8 +23,15 @@
       </ul>
     </div>
   </div>
-  <div class="introduction"></div>
-  <div class="search"></div>
+  <div class="introduction">
+    <div class="hello">
+      <div class="big-font">Hello</div>
+      <div class="small-font">Current patients</div>
+    </div>
+    <div class="search">
+      <p>Search patient</p>
+    </div>
+  </div>
 </body>
 
 </html>

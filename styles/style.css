@@ -3,6 +3,7 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: #EDEEF7;
 }
 
 .header {
@@ -35,6 +36,31 @@ html {
   gap: 15px;
 }
 
-.introduction {}
+.introduction {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+}
 
-.search {}
+.big-font {
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.small-font {
+  font-size: 16px;
+}
+
+.hello {
+  border-radius: 5px;
+  background-color: #F9F9F9;
+  width: 350px;
+  height: 150PX;
+  padding-left: 10px;
+}
+
+.search {
+  border-radius: 5px;
+  background-color: #144272;
+  width: 350px;
+}
