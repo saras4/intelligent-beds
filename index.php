@@ -1,4 +1,6 @@
 <?php include "db.php";?>
+<?php include "intelligent-funtions.php";?>
+
 <!DOCTYPE html>
 
 <html>
@@ -26,7 +28,7 @@
   <div class="introduction">
     <div class="hello">
       <div class="big-font">Hello</div>
-      <div class="small-font">Current patients</div>
+      <div class="small-font">Current patients: <?php numberOfPatients()?></div> 
     </div>
     <div class="search">
       <p>Search patient</p>
