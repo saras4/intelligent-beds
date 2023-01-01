@@ -1,30 +1,6 @@
 <?php include "db.php";?>
 <?php include "intelligent-funtions.php";?>
-
-<!DOCTYPE html>
-
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Intelligent Beds</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles/style.css">
-</head>
-
-<body>
-  <div class="header">
-    <div class="logo">Intelligent Beds </div>
-    <div class="header-links">
-      <ul>
-        <li><a href="#">Patients</a></li>
-        <li><a href="#">Add patient</a></li>
-        <li><a href="#">Update patient</a></li>
-      </ul>
-    </div>
-  </div>
+<?php include "header.php";?>
   <div class="introduction">
     <div class="hello">
       <div class="big-font">Hello,</div>
@@ -37,6 +13,4 @@
       </form>
   </div>
   </div>
-</body>
-
-</html>
+  <?php include "footer.php";?>

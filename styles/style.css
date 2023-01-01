@@ -1,3 +1,4 @@
+/* index */
 body,
 html {
   margin: 0;
@@ -114,3 +115,5 @@ html {
   height: 40px;
   cursor: pointer;
 }
+
+/* patient status */
