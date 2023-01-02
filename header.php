@@ -16,7 +16,6 @@
     <div class="logo">Intelligent Beds </div>
     <div class="header-links">
       <ul>
-        <li><a href="#">Patients</a></li>
         <li><a href="#">Add patient</a></li>
         <li><a href="#">Update patient</a></li>
       </ul>
