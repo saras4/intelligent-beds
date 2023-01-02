@@ -7,8 +7,8 @@
       <div class="small-font">Current patients: <?php numberOfPatients()?></div> 
     </div>
     <div class="search">
-      <form action="" class="search-bar">
-        <input type="text" placeholder="search patient (AMKA)" name="q">
+      <form action="patient-status.php" method = "post" class="search-bar">
+        <input type="number" placeholder="search patient (AMKA)" name="amka" >
         <button type="submit"><img src="images/search.png"></button>
       </form>
   </div>
@@ -18,7 +18,7 @@
       <thead>
         <th>First name</th>
         <th>Last name </th>
-        <th>Amka</th>
+        <th>AMKA</th>
      </thead>
     </tr>
     <tbody> <?php  patientTable();?> </tbody>

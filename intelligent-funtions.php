@@ -45,5 +45,10 @@ function patientTable(){
   mysqli_close($conn);
 
 }
+//Getting the value form search bar
+function amkaPost(){
+  if(isset($_POST['amka']))
+   echo $_POST['amka']; 
+}
 
 ?>
