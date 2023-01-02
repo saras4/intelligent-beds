@@ -13,4 +13,14 @@
       </form>
   </div>
   </div>
+  <table>
+    <tr>
+      <thead>
+        <th>First name</th>
+        <th>Last name </th>
+        <th>Amka</th>
+     </thead>
+    </tr>
+    <tbody> <?php  patientTable();?> </tbody>
+  </table>
   <?php include "footer.php";?>
