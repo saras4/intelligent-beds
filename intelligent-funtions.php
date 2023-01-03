@@ -24,7 +24,9 @@ function numberOfPatients() {
 
 function patientTable(){
   global $conn;
-
+  if(!$conn){
+    echo 'Connection error' . mysqli_connect_error();
+  }
   //Query
   $sql = "SELECT * FROM patients";
   $result = mysqli_query($conn, $sql);
@@ -44,14 +46,6 @@ function patientTable(){
   // close connection
   mysqli_close($conn);
 
-}
-
-//Getting the value from search bar
-function amkaPost(){
-
-
-  if(isset($_POST['amka']))
-   echo $_POST['amka']; 
 }
 
 function readPatients(){
@@ -81,28 +75,45 @@ function readPatients(){
   // // close connection
   // mysqli_close($conn);
 }
+
+
 function search(){
+  if (isset($_GET['search'])) {
+      global $conn;
+      $search = $_GET['search'];
+      $query = "SELECT * FROM patients WHERE amka = '$search' ";
+      $search_query = mysqli_query($conn, $query);
+      if (!$search_query) {
+        die('QUERY failed' . mysqli_error($conn));
+      }      
+      if($search_query->num_rows > 0){
+        while($row = $search_query-> fetch_assoc()){
+          echo '<tr><td>' . $row["first_name"] . "</td></tr>" . '<tr><td>' . $row["last_name"] . "</td></tr>" .'<tr><td>' . $row["amka"] . "</td></tr>";
+        }
+      }
+      else {
+        echo "No results";
+      }
+  }
+  }
+   
+
+
+function patientCondition(){
 if (isset($_GET['search'])) {
     global $conn;
-    $search = $_GET['search'];
-    $query = "SELECT * FROM patients WHERE amka = '$search' ";
+
+    $picture = $_GET['search'];
+    $query = 'SELECT * FROM sensor_indications WHERE patient_id = "$picture" ';
     $search_query = mysqli_query($conn, $query);
     if (!$search_query) {
-      die('QUERY failed' . mysqli_error($conn));
+        die('QUERY failed' . mysqli_error($conn));
     }
-    $count = mysqli_num_rows($search_query);
-    if($count == 0){
-      echo "<h1>NO RESULT </h1>";
-    }
-    else {
-      while($row = mysqli_fetch_assoc($search_query)){
-       echo  $amka = $row['amka'];
-       echo  $first_name = $row['first_name'];
-       echo $last_name = $row['last_name'];
-      }
+    while ($record = mysqli_fetch_assoc($search_query)) {
+        // $record = mysqli_fetch_assoc($search_query);
+        echo '<img src="'.$record['image_url'].'" width="300">';
     }
 }
-
 }
- 
 ?>
+

@@ -176,6 +176,21 @@ table tbody tr:last-of-type {
   display: flex;
 }
 
-.patient-info {}
+.patient-info {
+  border-radius: 5px;
+  background-color: #F9F9F9;
+  margin: 40px;
+}
 
-.patient-current-stage {}
+.patient-info table {}
+
+.patient-current-stage {
+  border-radius: 5px;
+  background-color: #F9F9F9;
+  margin: 40px;
+}
+
+.patient-current-stage img {
+  height: 500px;
+  width: auto;
+}
