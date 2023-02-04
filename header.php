@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Intelligent Beds</title>
+  <title>Inspect</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles/style.css">
@@ -13,7 +13,7 @@
 
 <body>
   <div class="header">
-    <div class="logo">Intelligent Beds </div>
+    <div class="logo">Inspect System </div>
     <div class="header-links">
       <ul>
         <li><a href="#">Add patient</a></li>

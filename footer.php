@@ -1,3 +1,3 @@
-<div class="footer">© Intelligent Beds</div>
+<div class="footer">© Inspect</div>
 </body>
 </html>
