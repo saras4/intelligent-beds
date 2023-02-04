@@ -99,21 +99,64 @@ function search(){
    
 
 
-function patientCondition(){
-if (isset($_GET['search'])) {
-    global $conn;
+// function patientCondition(){
+// if (isset($_GET['search'])) {
+//     global $conn;
 
-    $picture = $_GET['search'];
-    $query = 'SELECT * FROM sensor_indications WHERE patient_id = "$picture" ';
-    $search_query = mysqli_query($conn, $query);
-    if (!$search_query) {
-        die('QUERY failed' . mysqli_error($conn));
+//     $picture = $_GET['search'];
+//     $query = 'SELECT * FROM sensor_indications WHERE patient_id = "$picture" ';
+//     $search_query = mysqli_query($conn, $query);
+//     if (!$search_query) {
+//         die('QUERY failed' . mysqli_error($conn));
+//     }
+//     while ($record = mysqli_fetch_assoc($search_query)) {
+//         // $record = mysqli_fetch_assoc($search_query);
+//         echo '<img src="'.$record['image_url'].'" width="300">';
+//     }
+// }
+// }
+function patientCondition(){
+  if (isset($_GET['search'])) {
+      global $conn;
+      $picture = $_GET['search'];
+      $query = 'SELECT * FROM sensor_indications WHERE patient_id = "$picture" ';
+      $query = mysqli_query($conn, $query);
+      if (!$query) {
+          die('QUERY failed' . mysqli_error($conn));
+      }
+      while ($row = mysqli_fetch_assoc($query)) {
+          $patient_image = $row['image_url'];
+          echo $patient_image;
+      }
+  }
+  }
+
+
+  function patientState(){
+    if (isset($_GET['search'])) {
+        global $conn;
+        $picture = $_GET['search'];
+        $query = 'SELECT image_url FROM sensor_indications WHERE patient_id = "$picture" ';
+        $search_query = mysqli_query($conn, $query);
+        $result = mysqli_query($conn, $query);
+        $record = mysqli_fetch_assoc($result); 
+        echo $record['image_url'];
+
+        // free result from memory
+        mysqli_free_result($result);
     }
-    while ($record = mysqli_fetch_assoc($search_query)) {
-        // $record = mysqli_fetch_assoc($search_query);
-        echo '<img src="'.$record['image_url'].'" width="300">';
     }
-}
-}
+     
+
+
+
+
+
+
+
+
+
+
+
 ?>
 
