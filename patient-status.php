@@ -14,8 +14,8 @@
   <!-- <?php search();?> -->
   </div>
   <div class="patient-current-stage">
-    <!-- <?php patientCondition();?> -->
-    <?php readPatients(); ?>
+    <?php patientState();?>
+    <!-- <?php echo $patient_image;?> -->
   </div>
   </div>
 
