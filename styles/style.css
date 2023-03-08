@@ -182,7 +182,7 @@ table tbody tr:last-of-type {
   margin: 40px;
 }
 
-.patient-info table {}
+/* .patient-info table {} */
 
 .patient-current-stage {
   border-radius: 5px;
