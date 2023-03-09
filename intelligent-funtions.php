@@ -147,16 +147,25 @@ function patientCondition(){
     }
     }
      
-
-
-
-
-
-
-
-
-
-
+    function addBed(){
+      if(isset($_POST["submit"])){
+        global $conn;
+        $clinic = $_POST['clinic'];
+        $floor = $_POST['floor'];
+        $room = $_POST['room'];
+      
+       
+        $query = "INSERT INTO beds(clinic, floor, room)";
+        $query .= "VALUES ('$clinic', '$floor', '$room')";
+      
+        $result = mysqli_query($conn,$query);
+      
+        if(!$result){
+          die('query failed');
+        }
+      }
+      
+    }
 
 ?>
 
