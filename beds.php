@@ -7,7 +7,7 @@
 <?php include "header.php";?>
 <div class="landing-middle">
   <div class="big-font">Form to manage beds</div>
-  <div class = "bed-form">
+  <div class = "forms">
     <form action="beds.php" method="post">
 
       <div class="form-group">

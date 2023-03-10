@@ -150,10 +150,9 @@ function patientCondition(){
     function addBed(){
       if(isset($_POST["submit"])){
         global $conn;
-        $clinic = $_POST['clinic'];
-        $floor = $_POST['floor'];
-        $room = $_POST['room'];
-      
+        $clinic =mysqli_real_escape_string($conn,$_POST['clinic']);
+        $floor =mysqli_real_escape_string($conn,$_POST['floor']);
+        $room =mysqli_real_escape_string($conn,$_POST['room']);
        
         $query = "INSERT INTO beds(clinic, floor, room)";
         $query .= "VALUES ('$clinic', '$floor', '$room')";
@@ -167,5 +166,33 @@ function patientCondition(){
       
     }
 
+    function fetchBed(){
+      global $conn;
+      $query = "SELECT id FROM beds";
+      $result = mysqli_query($conn,$query);
+      while($row = mysqli_fetch_assoc($result)){
+        $id = $row['id'];
+        echo "<option value='$id'>$id</option>";
+      }
+    }
+    function addPatient(){
+      if(isset($_POST["submit"])){
+        global $conn;
+        $amka = $_POST['amka'];
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $age = $_POST['age']; 
+        $bed_id = $_POST['bed_id']; 
+        $query = "INSERT INTO patients(amka, first_name, last_name, age, bed_id )";
+        $query .= "VALUES ('$amka', '$first_name', '$last_name', '$age', '$bed_id')";
+      
+        $result = mysqli_query($conn,$query);
+      
+        if(!$result){
+          die('query failed');
+        }
+      }
+      
+    }
 ?>
 
