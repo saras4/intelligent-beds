@@ -8,28 +8,28 @@
 <div class="landing-middle">
   <div class="big-font">Form to manage patients</div>
   <div class = "forms">
-    <form action="patients.php" method="post">
+    <form action="newpatient.php" method="post">
 
-      <div class="form-group">
+      <div class="input_field">
       <label for="amka">AMKA</label>
-      <input type="text" name = "amka" class="form-control">
+      <input type="text" name = "amka" class="input">
       </div>
 
-      <div class="form-group">
+      <div class="input_field">
       <label for="first_name">First name</label>
-      <input type="text" name = "first_name"  class="form-control">
+      <input type="text" name = "first_name"  class="input">
       </div>
-      <div class="form-group">
+      <div class="input_field">
       <label for="last_name">Last name</label>
-      <input type="text" name = "last_name"  class="form-control">
+      <input type="text" name = "last_name"  class="input">
       </div>
-      <div class="form-group">
+      <div class="input_field">
       <label for="age">Age</label>
-      <input type="text" name = "age" class="form-control">
+      <input type="text" name = "age" class="input">
       </div>
-      <div class="form-group">
+      <div class="input_field">
         <label for="bed_id">Bed</label>
-        <select name="bed_id" class="form-control">
+        <select name="bed_id" class="input">
           <?php fetchBed(); ?>
         </select>
         
