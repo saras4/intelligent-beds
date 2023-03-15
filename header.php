@@ -16,8 +16,8 @@
     <div class="logo">Inspect System </div>
     <div class="header-links">
       <ul>
-        <li><a href="#">Manage Beds</a></li>
-        <li><a href="#">Manage Patients</a></li>
+        <li><a href="beds.php">Manage Beds</a></li>
+        <li><a href="patients.php">Manage Patients</a></li>
       </ul>
     </div>
   </div>

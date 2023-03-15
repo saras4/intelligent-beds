@@ -200,11 +200,77 @@ table tbody tr:last-of-type {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 80px;
+  padding-top: 40px;
   padding-left: 40px;
 
 }
 
 .landing-middle .big-font {
   width: 300px;
+}
+
+
+/* form pages */
+.wrapper {
+  max-width: 600px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+  padding: 10px;
+  margin-top: 50px;
+  margin-left: 10px;
+  border-radius: 3px;
+}
+
+.wrapper .big-font {
+  font-size: 24px;
+  padding-bottom: 10px;
+}
+
+.wrapper .form {
+  width: 100%;
+}
+
+.wrapper .form .input_field {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper .form .input_field label {
+  width: 200px;
+  color: #757575;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.wrapper .form .input_field .input {
+  width: 100%;
+  outline: none;
+  border: 1px solid #d5dbd9;
+  font-size: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.button {
+  background-color: #3882F6;
+  border: none;
+  font-weight: bold;
+  color: #F9FAF8;
+  font-size: 16px;
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+  padding: 0;
+}
+
+.button {
+  border: 2px solid #F9FAF8;
+}
+
+.button:hover {
+  background-color: #EDEEF7;
+  color: #3882f6;
 }

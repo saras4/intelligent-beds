@@ -131,8 +131,7 @@ function patientCondition(){
   }
   }
 
-
-  function patientState(){
+function patientState(){
     if (isset($_GET['search'])) {
         global $conn;
         $picture = $_GET['search'];
@@ -147,7 +146,9 @@ function patientCondition(){
     }
     }
      
-    function addBed(){
+
+    // beds
+function addBed(){
       if(isset($_POST["submit"])){
         global $conn;
         $clinic =mysqli_real_escape_string($conn,$_POST['clinic']);
@@ -166,7 +167,7 @@ function patientCondition(){
       
     }
 
-    function fetchBed(){
+function fetchBed(){
       global $conn;
       $query = "SELECT id FROM beds";
       $result = mysqli_query($conn,$query);
@@ -175,14 +176,14 @@ function patientCondition(){
         echo "<option value='$id'>$id</option>";
       }
     }
-    function addPatient(){
+function addPatient(){
       if(isset($_POST["submit"])){
         global $conn;
-        $amka = $_POST['amka'];
-        $first_name = $_POST['first_name'];
-        $last_name = $_POST['last_name'];
-        $age = $_POST['age']; 
-        $bed_id = $_POST['bed_id']; 
+        $amka = mysqli_real_escape_string($conn,$_POST['amka']);
+        $first_name = mysqli_real_escape_string($conn,$_POST['first_name']);
+        $last_name = mysqli_real_escape_string($conn,$_POST['last_name']);
+        $age = mysqli_real_escape_string($conn,$_POST['age']);
+        $bed_id = mysqli_real_escape_string($conn,$_POST['bed_id']);
         $query = "INSERT INTO patients(amka, first_name, last_name, age, bed_id )";
         $query .= "VALUES ('$amka', '$first_name', '$last_name', '$age', '$bed_id')";
       
@@ -194,5 +195,21 @@ function patientCondition(){
       }
       
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
 
