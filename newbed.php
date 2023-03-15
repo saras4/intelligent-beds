@@ -5,9 +5,9 @@
 ?>
 
 <?php include "header.php";?>
-<div class="landing-middle">
+<div class="wrapper">
   <div class="big-font">Form to manage beds</div>
-  <div class = "forms">
+  <div class = "form">
     <form action="newbed.php" method="post">
 
       <div class="input_field">
@@ -24,7 +24,7 @@
       <input type="text" name = "room"  class="input">
       </div>
 
-      <input type="submit" name = "submit" value = "Add bed">
+      <input type="submit" name = "submit" value = "Add bed" class="button">
     </form>
   </div>
 </div>

@@ -1,13 +1,12 @@
-<?php include "db.php";?>
 <?php include "intelligent-funtions.php";?>
 <?php 
   addPatient();
 ?>
 
 <?php include "header.php";?>
-<div class="landing-middle">
-  <div class="big-font">Form to manage patients</div>
-  <div class = "forms">
+<div class="wrapper">
+  <div class="big-font">Please add the patients info</div>
+  <div class = "form">
     <form action="newpatient.php" method="post">
 
       <div class="input_field">
@@ -36,7 +35,7 @@
       </div>
 
 
-      <input type="submit" name = "submit" value = "Add patient">
+      <input type="submit" name = "submit" value = "Add patient" class="button">
     </form>
   </div>
 </div>
