@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap');
+
 /* index */
 body,
 html {
@@ -9,7 +11,7 @@ html {
   display: flex;
   flex-direction: column;
   flex-grow: 1 1 auto;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   overflow: hidden;
 }
 
@@ -54,7 +56,7 @@ html {
 .big-font {
   font-weight: 800;
   font-size: 24px;
-  font-style: italic;
+  color: #4E6E81;
 }
 
 .small-font {
@@ -209,6 +211,27 @@ table tbody tr:last-of-type {
   width: 300px;
 }
 
+.middle-options {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  gap: 30px;
+}
+
+.middle-options img {
+  height: 100px;
+  width: auto;
+
+}
+
+
+.options {
+  border-radius: 25px;
+  border: 4px solid #144272;
+  border-radius: 25px;
+  padding: 10px;
+  text-align: center;
+}
 
 /* form pages */
 .wrapper {
