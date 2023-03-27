@@ -224,6 +224,11 @@ table tbody tr:last-of-type {
 
 }
 
+.middle-options a {
+  text-decoration: none;
+  color: #000;
+}
+
 
 .options {
   border-radius: 25px;
