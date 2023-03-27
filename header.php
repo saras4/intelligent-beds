@@ -13,7 +13,7 @@
 
 <body>
   <div class="header">
-    <div class="logo">Inspect System </div>
+    <div class="logo"> <a href="index.php">Inspect System </a></div>
     <div class="header-links">
       <ul>
         <li><a href="beds.php">Manage Beds</a></li>

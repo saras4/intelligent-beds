@@ -18,7 +18,7 @@
   </div>
   </a>
 
-  <a href="#">
+  <a href="monitor-patients.php">
   <div class="options">  
     <img src="icons/patient.png" alt="monitor patients"> 
     <h3>monitor patients</h3>

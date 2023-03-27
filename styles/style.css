@@ -30,6 +30,16 @@ html {
   margin-right: auto;
 }
 
+.logo a {
+  text-decoration: none;
+  color: #FFFBEB;
+}
+
+.header .logo a:hover {
+  color: #FFFBEB;
+
+}
+
 .header a {
   text-decoration: none;
   color: #FFFBEB;
