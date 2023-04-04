@@ -19,8 +19,11 @@
         <th>First name</th>
         <th>Last name </th>
         <th>AMKA</th>
+        <th>Action</th>
      </thead>
     </tr>
-    <tbody> <?php  patientTable();?> </tbody>
+    <tbody> 
+      <?php  patientTable();?> 
+  </tbody>
   </table>
   <?php include "footer.php";?>

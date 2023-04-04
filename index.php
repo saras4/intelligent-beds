@@ -14,12 +14,6 @@
 <body>
   <div class="header">
     <div class="logo"> <a href="index.php">Inspect System </a></div>
-    <!-- <div class="header-links">
-      <ul>
-        <li><a href="beds.php">Manage Beds</a></li>
-        <li><a href="patients.php">Manage Patients</a></li>
-      </ul>
-    </div> -->
   </div>
 <div class="landing-middle">
   <div class="big-font">This is a monitoring system for bedridden patients.Please choose one of the options:</div>
