@@ -33,7 +33,6 @@ function patientTable(){
 
   if($result->num_rows > 0){
     while($row = $result-> fetch_assoc()){
-      // echo '<tr><td>' . $row["first_name"] . "</td><td>" . $row["last_name"] . "</td><td>" . $row["amka"] . "</td><tr>";
       echo '<tr><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["amka"] . '</td><td><img src="icons/eye.png" alt="eye.png"></td></tr>';
     }
   }
