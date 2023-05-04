@@ -33,7 +33,7 @@ function patientTable(){
 
   if($result->num_rows > 0){
     while($row = $result-> fetch_assoc()){
-      echo '<tr><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["amka"] . '</td><td><img src="icons/eye.png" alt="eye.png"></td></tr>';
+      echo '<tr><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["amka"] . '</td><td><a href="patient-condition.php?patient_id=' . $row["amka"] . '"><img src="icons/eye.png" alt="eye.png"></a></td></tr>';
     }
   }
   else {
@@ -47,9 +47,10 @@ function patientTable(){
   mysqli_close($conn);
 
 }
-// <tr><td>
-// <img src="icons/eye.png" alt="eye.png">
-// </td></tr>
+
+
+// SAFE EYE CODE
+//  echo '<tr><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["amka"] . '</td><td><img src="icons/eye.png" alt="eye.png"></td></tr>';
 
 
 function readPatients(){
@@ -200,7 +201,47 @@ function addPatient(){
       
     }
 
+function cyclePatients(){
+  if (isset($_GET['patient_id'])) {
+    global $conn;
+    $patient_id = $_GET['patient_id'];
+    $sql = "SELECT * FROM sensor_indications WHERE patient_id = $patient_id";
+    $result = $conn->query($sql);
+    // Generate an HTML page that includes a JavaScript function to cycle through the images
+    $page = '<html><head><title>Patient Images</title></head><body>';
+    $page .= '<div id="image-container"></div>';
+    $page .= '<script>';
+    $page .= 'var images = [';
+    $first = true;
+    while ($row = $result->fetch_assoc()) {
+      if (!$first) {
+        $page .= ',';
+      }
+      $image_url = $row['image_url'];
+      $page .= '"' . $image_url . '"';
+      $first = false;
+    }
+    $page .= '];';
+    $page .= 'var index = 0;';
+    $page .= 'function cycleImages() {';
+    $page .= 'if (index < images.length) {';
+    $page .= 'document.getElementById("image-container").innerHTML = "<img src=\'" + images[index] + "\' alt=\'Patient Image\'>";';
+    $page .= 'index++;';
+    $page .= 'setTimeout(cycleImages, 5000);';
+    $page .= '}';
+    $page .= '}';
+    $page .= 'cycleImages();';
+    $page .= '</script>';
+    $page .= '</body></html>';
 
+    // Close the database connection
+    $conn->close();
+
+    // Output the HTML page
+    echo $page;
+
+    }
+}
 
 
 

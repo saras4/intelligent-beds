@@ -320,3 +320,9 @@ table tbody tr:last-of-type {
   background-color: #EDEEF7;
   color: #3882f6;
 }
+
+/* Patient image resolution tweak */
+.patient-image {
+  height: 300px;
+  width: 300px;
+}
