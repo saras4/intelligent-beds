@@ -201,58 +201,75 @@ function addPatient(){
       
     }
 
-function cyclePatients(){
-  if (isset($_GET['patient_id'])) {
-    global $conn;
-    $patient_id = $_GET['patient_id'];
-    $sql = "SELECT * FROM sensor_indications WHERE patient_id = $patient_id";
-    $result = $conn->query($sql);
-    // Generate an HTML page that includes a JavaScript function to cycle through the images
-    $page = '<html><head><title>Patient Images</title></head><body>';
-    $page .= '<div id="image-container"></div>';
-    $page .= '<script>';
-    $page .= 'var images = [';
-    $first = true;
-    while ($row = $result->fetch_assoc()) {
-      if (!$first) {
-        $page .= ',';
-      }
-      $image_url = $row['image_url'];
-      $page .= '"' . $image_url . '"';
-      $first = false;
+    function cyclePatients()
+    {
+        if (isset($_GET['patient_id'])) {
+            global $conn;
+            $patient_id = $_GET['patient_id'];
+            $sql = "SELECT * FROM sensor_indications WHERE patient_id = $patient_id";
+            $result = $conn->query($sql);
+    
+            // Generate an HTML page that includes a JavaScript function to cycle through the images
+            $page = '<html><head><title>Patient Images</title></head><body>';
+            $page .= '<div id="image-container"></div>';
+            $page .= '<div id="info-container"></div>';
+            $page .= '<script>';
+            $page .= 'var images = [';
+            $first = true;
+            while ($row = $result->fetch_assoc()) {
+                if (!$first) {
+                    $page .= ',';
+                }
+                $image_url = $row['image_url'];
+                $page .= '"' . $image_url . '"';
+                $first = false;
+            }
+            $page .= '];';
+            $page .= 'var patientIds = [';
+            $result->data_seek(0); // Reset the result set pointer to the beginning
+            $first = true;
+            while ($row = $result->fetch_assoc()) {
+                if (!$first) {
+                    $page .= ',';
+                }
+                $patient_id = $row['patient_id'];
+                $page .= '"' . $patient_id . '"';
+                $first = false;
+            }
+            $page .= '];';
+            $page .= 'var dates = [';
+            $result->data_seek(0); // Reset the result set pointer to the beginning
+            $first = true;
+            while ($row = $result->fetch_assoc()) {
+                if (!$first) {
+                    $page .= ',';
+                }
+                $created_at = $row['created_at'];
+                $page .= '"' . $created_at . '"';
+                $first = false;
+            }
+            $page .= '];';
+            $page .= 'var index = 0;';
+            $page .= 'function cycleImages() {';
+            $page .= 'if (index < images.length) {';
+            $page .= 'document.getElementById("image-container").innerHTML = "<img src=\'" + images[index] + "\' alt=\'Patient Image\'>";';
+            $page .= 'document.getElementById("info-container").innerHTML = "<span class=\'image-info\'>Patient ID: " + patientIds[index] + "<br>Created At: " + dates[index] + "</span>";';
+            $page .= 'index++;';
+            $page .= 'setTimeout(cycleImages, 5000);';
+            $page .= '}';
+            $page .= '}';
+            $page .= 'cycleImages();';
+            $page .= '</script>';
+            $page .= '</body></html>';
+    
+            // Close the database connection
+            // $conn->close();
+    
+            // Output the HTML page
+            echo $page;
+        }
     }
-    $page .= '];';
-    $page .= 'var index = 0;';
-    $page .= 'function cycleImages() {';
-    $page .= 'if (index < images.length) {';
-    $page .= 'document.getElementById("image-container").innerHTML = "<img src=\'" + images[index] + "\' alt=\'Patient Image\'>";';
-    $page .= 'index++;';
-    $page .= 'setTimeout(cycleImages, 5000);';
-    $page .= '}';
-    $page .= '}';
-    $page .= 'cycleImages();';
-    $page .= '</script>';
-    $page .= '</body></html>';
-
-    // Close the database connection
-    $conn->close();
-
-    // Output the HTML page
-    echo $page;
-
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 

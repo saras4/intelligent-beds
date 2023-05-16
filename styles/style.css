@@ -321,8 +321,38 @@ table tbody tr:last-of-type {
   color: #3882f6;
 }
 
-/* Patient image resolution tweak */
-.patient-image {
-  height: 300px;
-  width: 300px;
+/* Patient condition */
+
+.middle-condition {
+  display: flex;
+  padding: 10px;
 }
+
+.patient-container {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+  border-radius: 5px 5px 0 0;
+  border: 8px solid #144272;
+  padding: 10px;
+  text-align: center;
+  background-color: #DBDFEA;
+
+}
+
+/* Class inside script styling image for patient condition */
+#image-container img {
+  height: 300px;
+  width: auto;
+  border-radius: 5px;
+}
+
+/* Class inside script styling content under patient picture */
+.image-info {
+  display: block;
+  padding-top: 10px;
+}
+
+/* .patient-details {
+
+} */
