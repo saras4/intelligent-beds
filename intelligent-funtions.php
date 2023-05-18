@@ -269,6 +269,24 @@ function addPatient(){
             echo $page;
         }
     }
+    function retrieveFN()
+{
+    if (isset($_GET['patient_id'])) {
+        global $conn;
+        $patient_id = $_GET['patient_id'];
+        $sql = "SELECT first_name FROM patients WHERE amka = '$patient_id'";
+        $result = $conn->query($sql);
+
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['first_name'];
+        }
+    }
+
+    return "No data available";
+}
+
+    
     
 
 
