@@ -269,9 +269,10 @@ function addPatient(){
             echo $page;
         }
     }
+    // Patient Information Table
     function retrieveFN()
-{
-    if (isset($_GET['patient_id'])) {
+    {
+      if (isset($_GET['patient_id'])) {
         global $conn;
         $patient_id = $_GET['patient_id'];
         $sql = "SELECT first_name FROM patients WHERE amka = '$patient_id'";
@@ -281,15 +282,126 @@ function addPatient(){
             $row = $result->fetch_assoc();
             return $row['first_name'];
         }
+      }
+
+      return "No data available";
     }
 
-    return "No data available";
-}
 
+    function retrieveLN()
+    {
+      if (isset($_GET['patient_id'])) {
+        global $conn;
+        $patient_id = $_GET['patient_id'];
+        $sql = "SELECT last_name FROM patients WHERE amka = '$patient_id'";
+        $result = $conn->query($sql);
+
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['last_name'];
+        }
+      }
+
+      return "No data available";
+    }
+    function retrieveAMKA()
+    {
+      if (isset($_GET['patient_id'])) {
+        global $conn;
+        $patient_id = $_GET['patient_id'];
+        $sql = "SELECT amka FROM patients WHERE amka = '$patient_id'";
+        $result = $conn->query($sql);
+
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['amka'];
+        }
+      }
+
+      return "No data available";
+    }
+
+    function retrieveClinic()
+    {
+        if (isset($_GET['patient_id'])) {
+            global $conn;
+            $patient_id = $_GET['patient_id'];
+            $sql = "SELECT b.clinic
+                    FROM patients p
+                    INNER JOIN beds b ON p.bed_id = b.id
+                    WHERE p.amka = '$patient_id'";
+            $result = $conn->query($sql);
     
+            if ($result && $result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                return $row['clinic'];
+            }
+        }
     
+        return "No data available";
+    }
+
+
+    function retrieveFloor()
+    {
+        if (isset($_GET['patient_id'])) {
+            global $conn;
+            $patient_id = $_GET['patient_id'];
+            $sql = "SELECT b.floor
+                    FROM patients p
+                    INNER JOIN beds b ON p.bed_id = b.id
+                    WHERE p.amka = '$patient_id'";
+            $result = $conn->query($sql);
+    
+            if ($result && $result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                return $row['floor'];
+            }
+        }
+    
+        return "No data available";
+    } 
+
+    function retrieveRoom()
+    {
+        if (isset($_GET['patient_id'])) {
+            global $conn;
+            $patient_id = $_GET['patient_id'];
+            $sql = "SELECT b.room
+                    FROM patients p
+                    INNER JOIN beds b ON p.bed_id = b.id
+                    WHERE p.amka = '$patient_id'";
+            $result = $conn->query($sql);
+    
+            if ($result && $result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                return $row['room'];
+            }
+        }
+    
+        return "No data available";
+    }
 
 
 
+    function retrieveBedid()
+    {
+        if (isset($_GET['patient_id'])) {
+            global $conn;
+            $patient_id = $_GET['patient_id'];
+            $sql = "SELECT b.id
+                    FROM patients p
+                    INNER JOIN beds b ON p.bed_id = b.id
+                    WHERE p.amka = '$patient_id'";
+            $result = $conn->query($sql);
+    
+            if ($result && $result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                return $row['id'];
+            }
+        }
+    
+        return "No data available";
+    }
 ?>
 

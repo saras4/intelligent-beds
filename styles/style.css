@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&display=swap');
 
+
 /* index */
 body,
 html {
@@ -327,6 +328,7 @@ table tbody tr:last-of-type {
   display: flex;
   padding: 10px;
   justify-content: space-around;
+  text-align: center;
 }
 
 .patient-container {
@@ -356,4 +358,14 @@ table tbody tr:last-of-type {
 
 .patient-details {
   justify-self: center;
+}
+
+/* Afairesi styling apo table */
+.patient-details table tbody tr {
+  border-bottom: 1px solid #D8D8D8;
+  background-color: #EDEEF7;
+}
+
+.patient-details table tbody tr:last-of-type {
+  border-bottom: 2px solid #EDEEF7;
 }

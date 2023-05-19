@@ -15,27 +15,27 @@
     </tr>
     <tr>
         <th>Last name</th>
-        <td>data</td>
+        <td><?php echo retrieveLN()?></td>
     </tr>
     <tr>
         <th>AMKA</th>
-        <td>data</td>
+        <td><?php echo retrieveAMKA()?></td>
     </tr>
     <tr>
         <th>Clinic</th>
-        <td>data</td>
+        <td><?php echo retrieveClinic()?> </td>
     </tr>
     <tr>
         <th>Floor</th>
-        <td>data</td>
+        <td><?php echo retrieveFloor()?> </td>
     </tr>
     <tr>
         <th>Room</th>
-        <td>data</td>
+        <td><?php echo retrieveRoom()?> </td>
     </tr>
     <tr>
         <th>Bed ID</th>
-        <td>data</td>
+        <td><?php echo retrieveBedid()?> </td>
     </tr>
 </table>
 
