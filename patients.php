@@ -1,3 +1,4 @@
+<?php include "intelligent-funtions.php";?>
 <!DOCTYPE html>
 
 <html>
@@ -22,6 +23,22 @@
     </div>
   </div>
   <div class="landing-middle">
-    <div class="big-font">Patients Crud</div>
+    <div class="big-font">Manage patients</div>
+    <div class="patients-table">
+    <a href="newpatient.php" class="button">New patient</a>
+    <table>
+    <tr>
+      <thead>
+        <th>First name</th>
+        <th>Last name </th>
+        <th>AMKA</th>
+        <th>Action</th>
+     </thead>
+    </tr>
+    <tbody> 
+      <?php  patientTable();?> 
+  </tbody>
+  </table>
+  </div>
   </div>
 <?php include "footer.php";?>
