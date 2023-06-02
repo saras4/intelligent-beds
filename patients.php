@@ -32,6 +32,7 @@
         <th>First name</th>
         <th>Last name </th>
         <th>AMKA</th>
+        <th>Bed ID</th>
         <th>Action</th>
      </thead>
     </tr>

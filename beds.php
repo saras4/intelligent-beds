@@ -1,3 +1,4 @@
+<?php include "intelligent-funtions.php";?>
 <!DOCTYPE html>
 
 <html>
@@ -20,7 +21,27 @@
         <li><a href="monitor-patients.php">Monitor Patients</a></li>
       </ul>
     </div>
-  </div><div class="landing-middle">
-  <div class="big-font">Beds CRUD</div>
+  </div>
+  <div class="landing-middle">
+    <div class="big-font">Manage Beds</div>
+    <div class="patients-table">
+    <a href="newbed.php" class="button2">New bed</a>
+    <div class="table-container">
+    <table>
+    <tr>
+      <thead>
+        <th>Bed ID</th>
+        <th>Clinic</th>
+        <th>Floor </th>
+        <th>Room</th>
+        <th>Action</th>
+     </thead>
+    </tr>
+    <tbody> 
+      <?php  bedTable();?> 
+  </tbody>
+  </table>
+  </div>
 </div>
+  </div>
 <?php include "footer.php";?>

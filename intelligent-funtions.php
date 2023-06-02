@@ -440,7 +440,7 @@ function patientTable2(){
 
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-      echo '<tr><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["amka"] . '</td><td><a href="delete.php?amka=' . $row["amka"] . '"><img src="icons/delete.png" alt="delete.png"></a></td></tr>';
+      echo '<tr><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["amka"] . '</td><td>' . $row["bed_id"] . '</td><td><a href="delete.php?amka=' . $row["amka"] . '"><img src="icons/delete.png" alt="delete.png"></a></td></tr>';
     }
   }
   
@@ -454,4 +454,36 @@ function patientTable2(){
   // close connection
   mysqli_close($conn);
     }
+
+
+
+
+
+
+function bedTable(){
+
+      global $conn;
+      if(!$conn){
+        echo 'Connection error' . mysqli_connect_error();
+      }
+      //Query
+      $sql = "SELECT * FROM beds";
+      $result = mysqli_query($conn, $sql);
+    
+      if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+          echo '<tr><td>' . $row["id"] . '</td><td>' . $row["clinic"] . '</td><td>' . $row["floor"] . '</td><td>' . $row["room"] . '</td><td><a href="deletebed.php?bed_id=' . $row["id"] . '"><img src="icons/delete.png" alt="delete.png"></a></td></tr>';
+        }
+      }
+      
+      else {
+        echo "No results";
+      }
+      
+      // free result from memory
+      mysqli_free_result($result);
+    
+      // close connection
+      mysqli_close($conn);
+        }
 ?>

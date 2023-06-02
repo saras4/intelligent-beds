@@ -165,13 +165,17 @@ table {
   margin: 40px;
   font-size: 0.9em;
   border-radius: 5px 5px 0 0;
-  overflow: hidden;
-  /* align-self: center; */
+}
+
+.table-container {
+  max-height: 400px;
+  /* Set the desired height for the table container */
+  overflow-y: auto;
 }
 
 table thead tr {
   background-color: #144272;
-  color: #EDEEF7;
+  color: #edeef7;
   text-align: left;
   font-weight: bold;
 }
@@ -181,8 +185,19 @@ table td {
   padding: 12px 15px;
 }
 
+/* Table head corners curved */
+th:first-child {
+  border-top-left-radius: 5px;
+}
+
+th:last-child {
+  border-top-right-radius: 5px;
+}
+
+
+
 table tbody tr {
-  border-bottom: 1px solid #D8D8D8;
+  border-bottom: 1px solid #d8d8d8;
   background-color: white;
 }
 
@@ -192,11 +207,6 @@ td img {
   display: block;
   margin: 0 auto;
 }
-
-/* den einai arithmimena */
-/* table tbody tr:nth-of-type(even) {
-  background-color: #144272;
-} */
 
 table tbody tr:last-of-type {
   border-bottom: 2px solid #144272;
@@ -385,13 +395,13 @@ table tbody tr:last-of-type {
 }
 
 .patients-table a {
-  margin-left: 40px;
+  margin-left: 20px;
   margin-top: 40px;
 }
 
 .patients-table table {
   margin-top: 5px;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .button2 {
