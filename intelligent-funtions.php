@@ -403,5 +403,55 @@ function addPatient(){
     
         return "No data available";
     }
-?>
+    
 
+
+    function deletePatient()
+    {
+      global $conn;
+    
+      if (isset($_GET['amka'])) {
+        $amka = $_GET['amka'];
+        $sql = "DELETE FROM patients WHERE amka = ?";
+    
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $amka);
+        $stmt->execute();
+    
+        if ($stmt->affected_rows > 0) {
+          echo "Row deleted successfully.";
+        } else {
+          echo "Error deleting row.";
+        }
+    
+        $stmt->close();
+      }
+    }
+    
+
+function patientTable2(){
+  global $conn;
+  if(!$conn){
+    echo 'Connection error' . mysqli_connect_error();
+  }
+  //Query
+  $sql = "SELECT * FROM patients";
+  $result = mysqli_query($conn, $sql);
+
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      echo '<tr><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["amka"] . '</td><td><a href="delete.php?amka=' . $row["amka"] . '"><img src="icons/delete.png" alt="delete.png"></a></td></tr>';
+    }
+  }
+  
+  else {
+    echo "No results";
+  }
+  
+  // free result from memory
+  mysqli_free_result($result);
+
+  // close connection
+  mysqli_close($conn);
+    }
+?>

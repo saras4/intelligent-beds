@@ -25,7 +25,7 @@
   <div class="landing-middle">
     <div class="big-font">Manage patients</div>
     <div class="patients-table">
-    <a href="newpatient.php" class="button">New patient</a>
+    <a href="newpatient.php" class="button2">New patient</a>
     <table>
     <tr>
       <thead>
@@ -36,7 +36,7 @@
      </thead>
     </tr>
     <tbody> 
-      <?php  patientTable();?> 
+      <?php  patientTable2();?> 
   </tbody>
   </table>
   </div>
