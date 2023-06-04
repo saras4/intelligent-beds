@@ -153,24 +153,28 @@ function patientState(){
      
 
     // beds
-function addBed(){
-      if(isset($_POST["submit"])){
+    function addBed() {
+      if (isset($_POST["submit"])) {
         global $conn;
-        $clinic =mysqli_real_escape_string($conn,$_POST['clinic']);
-        $floor =mysqli_real_escape_string($conn,$_POST['floor']);
-        $room =mysqli_real_escape_string($conn,$_POST['room']);
-       
-        $query = "INSERT INTO beds(clinic, floor, room)";
-        $query .= "VALUES ('$clinic', '$floor', '$room')";
-      
-        $result = mysqli_query($conn,$query);
-      
-        if(!$result){
+        $clinic = mysqli_real_escape_string($conn, $_POST['clinic']);
+        $floor = mysqli_real_escape_string($conn, $_POST['floor']);
+        $room = mysqli_real_escape_string($conn, $_POST['room']);
+        
+        $query = "INSERT INTO beds (clinic, floor, room)";
+        $query .= " VALUES ('$clinic', '$floor', '$room')";
+    
+        $result = mysqli_query($conn, $query);
+    
+        if (!$result) {
           die('query failed');
+        } else {
+          // Redirect using JavaScript(getting error with header redirection)
+          echo '<script>window.location.href = "beds.php";</script>';
+          exit;
         }
       }
-      
     }
+    
 
 function fetchBed(){
       global $conn;
@@ -194,8 +198,12 @@ function addPatient(){
       
         $result = mysqli_query($conn,$query);
       
-        if(!$result){
+        if (!$result) {
           die('query failed');
+        } else {
+          // Redirect using JavaScript(getting error with header redirection)
+          echo '<script>window.location.href = "patients.php";</script>';
+          exit;
         }
       }
       

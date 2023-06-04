@@ -1,8 +1,6 @@
 <?php include "db.php";?>
 <?php include "intelligent-funtions.php";?>
-<?php 
-  addBed();
-?>
+<?php addBed(); ?>
 
 <?php include "header.php";?>
 <div class="wrapper">
