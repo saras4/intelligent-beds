@@ -176,15 +176,29 @@ function patientState(){
     }
     
 
+// function fetchBed(){
+//       global $conn;
+//       $query = "SELECT id FROM beds";
+//       $result = mysqli_query($conn,$query);
+//       while($row = mysqli_fetch_assoc($result)){
+//         $id = $row['id'];
+//         echo "<option value='$id'>$id</option>";
+//       }
+//     }
+
 function fetchBed(){
-      global $conn;
-      $query = "SELECT id FROM beds";
-      $result = mysqli_query($conn,$query);
-      while($row = mysqli_fetch_assoc($result)){
-        $id = $row['id'];
-        echo "<option value='$id'>$id</option>";
-      }
-    }
+  global $conn;
+  // Query to fetch only the beds that are unassigned
+  $query = "SELECT id FROM beds WHERE id NOT IN (SELECT bed_id FROM patients)";
+  $result = mysqli_query($conn, $query);
+  
+  while($row = mysqli_fetch_assoc($result)){
+    $id = $row['id'];
+    echo "<option value='$id'>$id</option>";
+  }
+}
+
+
 function addPatient(){
       if(isset($_POST["submit"])){
         global $conn;
