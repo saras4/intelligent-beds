@@ -21,8 +21,12 @@
       <label for="Room">Room</label>
       <input type="text" name = "room"  class="input">
       </div>
-
-      <input type="submit" name = "submit" value = "Add bed" class="button">
+        
+      <div class="update_button">
+        <input type="submit" name = "submit" value = "Add bed" class="button2">
+        <a href="beds.php" class="button2">Cancel</a>
+      </div>
+      
     </form>
   </div>
 </div>

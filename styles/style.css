@@ -340,6 +340,7 @@ table tbody tr:last-of-type {
 .button:hover {
   background-color: #EDEEF7;
   color: #3882f6;
+  cursor: pointer;
 }
 
 /* Patient condition */
@@ -422,4 +423,28 @@ table tbody tr:last-of-type {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Highest importace */
+div.update_button input.button2 {
+  height: 44px;
+  width: 124;
+  cursor: pointer;
+}
+
+
+
+
+.update_button {
+  display: flex;
+  gap: 10px;
+}
+
+.icon {
+  display: inline-block;
+}
+
+/* remove underline from icon */
+.icon-link {
+  text-decoration: none;
 }

@@ -3,8 +3,9 @@
 <style>
 <?php include "styles/style.css";?>
 </style>
-<?php 
 
+<?php 
+include "db.php";
 function numberOfPatients() {
   global $conn;
   $sql = 'SELECT COUNT(*) c FROM patients';
@@ -104,22 +105,7 @@ function search(){
    
 
 
-// function patientCondition(){
-// if (isset($_GET['search'])) {
-//     global $conn;
 
-//     $picture = $_GET['search'];
-//     $query = 'SELECT * FROM sensor_indications WHERE patient_id = "$picture" ';
-//     $search_query = mysqli_query($conn, $query);
-//     if (!$search_query) {
-//         die('QUERY failed' . mysqli_error($conn));
-//     }
-//     while ($record = mysqli_fetch_assoc($search_query)) {
-//         // $record = mysqli_fetch_assoc($search_query);
-//         echo '<img src="'.$record['image_url'].'" width="300">';
-//     }
-// }
-// }
 function patientCondition(){
   if (isset($_GET['search'])) {
       global $conn;
@@ -176,15 +162,6 @@ function patientState(){
     }
     
 
-// function fetchBed(){
-//       global $conn;
-//       $query = "SELECT id FROM beds";
-//       $result = mysqli_query($conn,$query);
-//       while($row = mysqli_fetch_assoc($result)){
-//         $id = $row['id'];
-//         echo "<option value='$id'>$id</option>";
-//       }
-//     }
 
 function fetchBed(){
   global $conn;
@@ -462,9 +439,26 @@ function patientTable2(){
 
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-      echo '<tr><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["amka"] . '</td><td>' . $row["bed_id"] . '</td><td><a href="delete.php?amka=' . $row["amka"] . '"><img src="icons/delete.png" alt="delete.png"></a></td></tr>';
+      echo '<tr>
+              <td>' . $row["first_name"] . '</td>
+              <td>' . $row["last_name"] . '</td>
+              <td>' . $row["amka"] . '</td>
+              <td>' . $row["bed_id"] . '</td>
+              <td>
+                <a href="delete.php?amka=' . $row["amka"] . '" class="icon-link">
+                  <img src="icons/delete.png" alt="delete.png" class="icon">
+                </a>
+                <a href="update.php?amka=' . $row["amka"] . '" class="icon-link">
+                  <img src="icons/edit.png" alt="edit.png" class="icon">
+                </a>
+              </td>
+            </tr>';
     }
   }
+  
+  
+
+  
   
   else {
     echo "No results";
@@ -508,4 +502,138 @@ function bedTable(){
       // close connection
       mysqli_close($conn);
         }
+
+
+        
+        
+        
+        
+        
+        // EDIT PAGE
+
+        // function getPatientByAMKA($amka)
+        // {
+        //   global $conn;
+          
+        //   // Prepare and execute the query
+        //   $stmt = $conn->prepare("SELECT * FROM patients WHERE amka = ?");
+        //   $stmt->bind_param("s", $amka);
+        //   $stmt->execute();
+        
+        //   // Get the result
+        //   $result = $stmt->get_result();
+        
+        //   if ($result->num_rows > 0) {
+        //     // Fetch the patient information
+        //     $patient = $result->fetch_assoc();
+        //     return $patient;
+        //   } else {
+        //     return null; // Patient not found
+        //   }
+        // }
+        
+function updatePatient()
+{
+  global $conn;
+
+  if(isset($_POST["submit"])){
+    $amka = mysqli_real_escape_string($conn,$_POST['amka']);
+    $first_name = mysqli_real_escape_string($conn,$_POST['first_name']);
+    $last_name = mysqli_real_escape_string($conn,$_POST['last_name']);
+    $age = mysqli_real_escape_string($conn,$_POST['age']);
+    $bed_id = mysqli_real_escape_string($conn,$_POST['bed_id']);
+    $query = "UPDATE patients SET ";
+    $query .= "first_name = '$first_name', ";
+    $query .= "last_name = '$last_name', ";
+    $query .= "age = '$age', ";
+    $query .= "bed_id = '$bed_id' ";
+    $query .= "WHERE amka = '$amka'";
+    $result = mysqli_query($conn,$query);
+  
+    if (!$result) {
+      die('Query failed: ' . mysqli_error($conn));
+    } else {
+      // Redirect using JavaScript(getting error with header redirection)
+      echo '<script>window.location.href = "patients.php";</script>';
+      exit;
+    }
+  }
+}
+
+
+function fnUpdate(){
+  global $conn;
+  //pull data from database
+  if(isset($_GET['amka'])) {
+ 
+    $amka = $_GET['amka'];
+    $sql = "SELECT * FROM patients WHERE amka = $amka" ;
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result)){
+      echo $fn = $row['first_name'];
+    }
+  }
+}
+
+function lnUpdate(){
+  global $conn;
+  //pull data from database
+  if(isset($_GET['amka'])) {
+ 
+    $amka = $_GET['amka'];
+    $sql = "SELECT * FROM patients WHERE amka = $amka" ;
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result)){
+      echo $ln = $row['last_name'];
+    }
+  }
+}
+
+function ageUpdate() {
+  global $conn;
+  //pull data from database
+  if(isset($_GET['amka'])) {
+ 
+    $amka = $_GET['amka'];
+    $sql = "SELECT * FROM patients WHERE amka = $amka" ;
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result)){
+      echo $age = $row['age'];
+    }
+  }
+}
+
+function fetchBed2(){
+
+global $conn;
+if(isset($_GET['amka'])) {
+
+    $amka = $_GET['amka'];
+    $sql = "SELECT * FROM patients WHERE amka = $amka" ;
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result)){
+       $currentBedId = $row['bed_id'];
+    }
+}
+  // Query to fetch the beds that are unassigned and the current bed_id (if provided)
+  $query = "SELECT id FROM beds WHERE id NOT IN (SELECT bed_id FROM patients)";
+  if ($currentBedId !== null) {
+    $query .= " OR id = '$currentBedId'";
+  }
+  $result = mysqli_query($conn, $query);
+  
+  while($row = mysqli_fetch_assoc($result)){
+    $id = $row['id'];
+    $selected = ($id == $currentBedId) ? 'selected' : ''; // Set 'selected' attribute for the current bed_id
+    echo "<option value='$id' $selected>$id</option>";
+  }
+}
+
+
+
+
+
+
+
+
 ?>

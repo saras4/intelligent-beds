@@ -31,11 +31,13 @@
         <select name="bed_id" class="input">
           <?php fetchBed(); ?>
         </select>
-        
       </div>
 
-
-      <input type="submit" name = "submit" value = "Add patient" class="button">
+      <div class="update_button">
+        <input type="submit" name = "submit" value = "Add patient" class="button2">
+        <a href="patients.php" class="button2">Cancel</a>
+      </div>
+      
     </form>
   </div>
 </div>
