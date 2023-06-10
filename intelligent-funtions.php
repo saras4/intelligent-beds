@@ -456,10 +456,6 @@ function patientTable2(){
     }
   }
   
-  
-
-  
-  
   else {
     echo "No results";
   }
@@ -469,7 +465,8 @@ function patientTable2(){
 
   // close connection
   mysqli_close($conn);
-    }
+
+}
 
 
 
@@ -488,7 +485,20 @@ function bedTable(){
     
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-          echo '<tr><td>' . $row["id"] . '</td><td>' . $row["clinic"] . '</td><td>' . $row["floor"] . '</td><td>' . $row["room"] . '</td><td><a href="deletebed.php?bed_id=' . $row["id"] . '"><img src="icons/delete.png" alt="delete.png"></a></td></tr>';
+          echo 
+            '<tr>
+              <td>' . $row["id"] . '</td>
+              <td>' . $row["clinic"] . '</td>
+              <td>' . $row["floor"] . '</td>
+              <td>' . $row["room"] . '</td>
+              <td>
+                <a href="deletebed.php?bed_id=' . $row["id"] . '" class="icon-link">
+                <img src="icons/delete.png"   alt="delete.png" class="icon"></a>
+                <a href="updatebed.php?bed_id=' . $row["id"] . '" class="icon-link">
+                <img src="icons/edit.png" alt="edit.png" class="icon">
+              </a>
+              </td>
+            </tr>';
         }
       }
       
@@ -552,7 +562,8 @@ function updatePatient()
   
     if (!$result) {
       die('Query failed: ' . mysqli_error($conn));
-    } else {
+    } 
+    else {
       // Redirect using JavaScript(getting error with header redirection)
       echo '<script>window.location.href = "patients.php";</script>';
       exit;
@@ -629,11 +640,74 @@ if(isset($_GET['amka'])) {
   }
 }
 
+function updateBed()
+{
+  global $conn;
 
+  if(isset($_POST["submit"])){
+    $id = mysqli_real_escape_string($conn,$_POST['id']);
+    $clinic = mysqli_real_escape_string($conn,$_POST['clinic']);
+    $floor = mysqli_real_escape_string($conn,$_POST['floor']);
+    $room = mysqli_real_escape_string($conn,$_POST['room']);
+    $query = "UPDATE beds SET ";
+    $query .= "clinic = '$clinic', ";
+    $query .= "floor = '$floor', ";
+    $query .= "room = '$room' ";
+    $query .= "WHERE id = '$id'";
+    $result = mysqli_query($conn,$query);
+  
+    if (!$result) {
+      die('Query failed: ' . mysqli_error($conn));
+    } 
+    else {
+      // Redirect using JavaScript(getting error with header redirection)
+      echo '<script>window.location.href = "beds.php";</script>';
+      exit;
+    }
+  }
+}
 
+function clinicUpdate(){
+  global $conn;
+  //pull data from database
+  if(isset($_GET['bed_id'])) {
+ 
+    $bed_id = $_GET['bed_id'];
+    $sql = "SELECT * FROM beds WHERE id = $bed_id" ;
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result)){
+      echo $clinic = $row['clinic'];
+    }
+  }
+}
 
+function floorUpdate(){
+  global $conn;
+  //pull data from database
+  if(isset($_GET['bed_id'])) {
+ 
+    $bed_id = $_GET['bed_id'];
+    $sql = "SELECT * FROM beds WHERE id = $bed_id" ;
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result)){
+      echo $floor = $row['floor'];
+    }
+  }
+}
 
-
+function roomUpdate(){
+  global $conn;
+  //pull data from database
+  if(isset($_GET['bed_id'])) {
+ 
+    $bed_id = $_GET['bed_id'];
+    $sql = "SELECT * FROM beds WHERE id = $bed_id" ;
+    $result = mysqli_query($conn, $sql);
+    while($row = mysqli_fetch_assoc($result)){
+      echo $room = $row['room'];
+    }
+  }
+}
 
 
 ?>
