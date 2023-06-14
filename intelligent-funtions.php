@@ -176,29 +176,40 @@ function fetchBed(){
 }
 
 
-function addPatient(){
-      if(isset($_POST["submit"])){
-        global $conn;
-        $amka = mysqli_real_escape_string($conn,$_POST['amka']);
-        $first_name = mysqli_real_escape_string($conn,$_POST['first_name']);
-        $last_name = mysqli_real_escape_string($conn,$_POST['last_name']);
-        $age = mysqli_real_escape_string($conn,$_POST['age']);
-        $bed_id = mysqli_real_escape_string($conn,$_POST['bed_id']);
-        $query = "INSERT INTO patients(amka, first_name, last_name, age, bed_id )";
-        $query .= "VALUES ('$amka', '$first_name', '$last_name', '$age', '$bed_id')";
-      
-        $result = mysqli_query($conn,$query);
-      
-        if (!$result) {
-          die('query failed');
-        } else {
-          // Redirect using JavaScript(getting error with header redirection)
-          echo '<script>window.location.href = "patients.php";</script>';
-          exit;
-        }
-      }
-      
+function addPatient() {
+  if (isset($_POST["submit"])) {
+    global $conn;
+    $amka = mysqli_real_escape_string($conn, $_POST['amka']);
+    $first_name = mysqli_real_escape_string($conn, $_POST['first_name']);
+    $last_name = mysqli_real_escape_string($conn, $_POST['last_name']);
+    $age = mysqli_real_escape_string($conn, $_POST['age']);
+    $bed_id = mysqli_real_escape_string($conn, $_POST['bed_id']);
+
+    // Check if the amka (primary key) already exists in the database
+    $checkQuery = "SELECT * FROM patients WHERE amka = '$amka'";
+    $checkResult = mysqli_query($conn, $checkQuery);
+
+    if (mysqli_num_rows($checkResult) > 0) {
+      // Primary key already exists, display an error message
+      echo "Error: The primary key (AMKA) is already taken.";
+      return; // Exit the function without executing the insertion
     }
+
+    $query = "INSERT INTO patients (amka, first_name, last_name, age, bed_id)";
+    $query .= " VALUES ('$amka', '$first_name', '$last_name', '$age', '$bed_id')";
+
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+      die('Query failed');
+    } else {
+      // Redirect using JavaScript (getting error with header redirection)
+      echo '<script>window.location.href = "patients.php";</script>';
+      exit;
+    }
+  }
+}
+
 
     function cyclePatients()
     {
@@ -519,29 +530,7 @@ function bedTable(){
         
         
         
-        // EDIT PAGE
-
-        // function getPatientByAMKA($amka)
-        // {
-        //   global $conn;
-          
-        //   // Prepare and execute the query
-        //   $stmt = $conn->prepare("SELECT * FROM patients WHERE amka = ?");
-        //   $stmt->bind_param("s", $amka);
-        //   $stmt->execute();
-        
-        //   // Get the result
-        //   $result = $stmt->get_result();
-        
-        //   if ($result->num_rows > 0) {
-        //     // Fetch the patient information
-        //     $patient = $result->fetch_assoc();
-        //     return $patient;
-        //   } else {
-        //     return null; // Patient not found
-        //   }
-        // }
-        
+    
 function updatePatient()
 {
   global $conn;

@@ -26,6 +26,7 @@
     <div class="big-font">Manage patients</div>
     <div class="patients-table">
     <a href="newpatient.php" class="button2">New patient</a>
+    <div class="table-container">
     <table>
     <tr>
       <thead>
@@ -40,6 +41,7 @@
       <?php  patientTable2();?> 
   </tbody>
   </table>
+    </div>
   </div>
   </div>
 <?php include "footer.php";?>
