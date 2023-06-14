@@ -15,17 +15,17 @@
 
       <div class="input_field">
       <label for="clinic">Clinic</label>
-      <input type="text" value="<?php clinicUpdate(); ?>" name = "clinic"  class="input">
+      <input type="text" value="<?php clinicUpdate(); ?>" name = "clinic"  oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Z]/g, '');" pattern="[A-Z]+" title="Please enter only uppercase characters" required class="input"> 
       </div>
 
       <div class="input_field">
       <label for="floor">Floor</label>
-      <input type="text" value="<?php floorUpdate(); ?>" name = "floor"  class="input">
+      <input type="number" value="<?php floorUpdate(); ?>" name = "floor"  required class="input" oninput="javascript: if (this.value.length > 2) this.value = this.value.slice(0, 2);">
       </div>
 
       <div class="input_field">
       <label for="room">Room</label>
-      <input type="text" value="<?php roomUpdate(); ?>" name = "room" class="input">
+      <input type="text" value="<?php roomUpdate(); ?>" name = "room" class="input" required oninput="this.value = this.value.toUpperCase();">
       </div>
 
       

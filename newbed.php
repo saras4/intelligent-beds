@@ -10,16 +10,17 @@
 
       <div class="input_field">
       <label for="clinic">Clinic</label>
-      <input type="text" name = "clinic" class="input">
+      <input type="text" name = "clinic" oninput="this.value = this.value.toUpperCase(); this.value = this.value.replace(/[^A-Z]/g, '');" pattern="[A-Z]+" title="Please enter only uppercase characters" required class="input"> 
       </div>
 
       <div class="input_field">
       <label for="floor">Floor</label>
-      <input type="text" name = "floor"  class="input">
+      <input type="number" name = "floor"  required class="input" oninput="javascript: if (this.value.length > 2) this.value = this.value.slice(0, 2);">
       </div>
+
       <div class="input_field">
       <label for="Room">Room</label>
-      <input type="text" name = "room"  class="input">
+      <input type="text" name = "room"  class="input" required oninput="this.value = this.value.toUpperCase();">
       </div>
         
       <div class="update_button">
