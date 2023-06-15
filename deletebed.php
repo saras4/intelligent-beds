@@ -10,6 +10,12 @@ if (isset($_GET['bed_id'])) {
   if ($result) {
     header("Location: beds.php");
     exit();
-  }
+  } else {
+    echo "<script>
+            alert('You are unable to delete this bed as it is currently occupied by a patient.');
+            window.location.href = 'beds.php';
+          </script>";
+    exit();
+}
 }
 ?>

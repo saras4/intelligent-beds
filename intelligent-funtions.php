@@ -5,7 +5,8 @@
 </style>
 
 <?php 
-include "db.php";
+
+
 function numberOfPatients() {
   global $conn;
   $sql = 'SELECT COUNT(*) c FROM patients';
