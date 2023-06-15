@@ -4,7 +4,7 @@
 
 <?php include "header.php";?>
 <div class="wrapper">
-  <div class="big-font">Form to manage beds</div>
+  <div class="big-font">Please enter bed details</div>
   <div class = "form">
     <form action="newbed.php" method="post">
 

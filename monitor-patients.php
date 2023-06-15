@@ -8,7 +8,7 @@
     </div>
     <div class="search">
       <form action="patient-condition.php" method="get" class="search-bar">
-       <input type="number" placeholder="Search patient (AMKA)" name="patient_id">
+       <input type="number" placeholder="Monitor patient (AMKA)" name="patient_id">
        <button type="submit"><img src="images/search.png"></button>
       </form>
 

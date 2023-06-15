@@ -455,6 +455,7 @@ function patientTable2(){
               <td>' . $row["first_name"] . '</td>
               <td>' . $row["last_name"] . '</td>
               <td>' . $row["amka"] . '</td>
+              <td>' . $row["age"] . '</td>
               <td>' . $row["bed_id"] . '</td>
               <td>
                 <a href="delete.php?amka=' . $row["amka"] . '" class="icon-link">
