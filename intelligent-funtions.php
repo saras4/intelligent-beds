@@ -184,6 +184,8 @@ function addPatient() {
             echo $page;
         }
     }
+
+    
     // Patient Information Table
     function retrieveFN()
     {
