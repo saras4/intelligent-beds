@@ -16,12 +16,6 @@ function numberOfPatients() {
   $record = mysqli_fetch_assoc($result); 
   echo $record['c'];
 
-  // free result from memory
-  mysqli_free_result($result);
-
-  // // close connection
-  // mysqli_close($conn);
-
 }
 
 function patientTable(){
@@ -185,9 +179,6 @@ function addPatient() {
             $page .= 'cycleImages();';
             $page .= '</script>';
             $page .= '</body></html>';
-    
-            // Close the database connection
-            // $conn->close();
     
             // Output the HTML page
             echo $page;

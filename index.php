@@ -15,11 +15,12 @@
   <div class="header">
     <div class="logo"> <a href="index.php">Inspect System </a></div>
   </div>
-<div class="landing-middle">
-  <div class="big-font">This is a monitoring system for bedridden patients. Please choose one of the options:</div>
-</div>
+  <div class="landing-middle">
+    <div class="big-font">
+      This is a monitoring system for bedridden patients. Please choose one of the options:
+    </div>
+  </div>
 <div class="middle-options">
-
   <a href="patients.php">
   <div class="options">  
     <img src="icons/medical.png" alt="manage patients"> 
