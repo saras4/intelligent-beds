@@ -10,11 +10,11 @@
     foreach ($patients as $patient) {
       $patientId = $patient['amka'];
       $patientFullName = $patient['first_name'] . ' ' . $patient['last_name'];
-
-      echo '<div class="patient-container">';
+  
+      echo '<div class="patient-container" onclick="location.href=\'patient-condition.php?patient_id=' . $patientId . '\'" style="cursor: pointer;">';
       echo '<h3>' . $patientFullName . '</h3>';
       echo '<div id="image-container-' . $patientId . '"></div>';
-
+  
       // Generate the JavaScript code for cycling through the images
       echo '<script>';
       echo 'var images_' . $patientId . ' = ' . json_encode(getPatientImages($patientId)) . ';';
@@ -28,9 +28,13 @@
       echo '}';
       echo 'cycleImages_' . $patientId . '();';
       echo '</script>';
-
+  
       echo '</div>';
-    }
+  }
+  
+  
+  
+  
   } else {
     echo '<p>No patients found.</p>';
   }
