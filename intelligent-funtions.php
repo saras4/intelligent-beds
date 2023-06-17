@@ -119,71 +119,50 @@ function addPatient() {
 }
 
 
-    function cyclePatients()
-    {
-        if (isset($_GET['patient_id'])) {
-            global $conn;
-            $patient_id = $_GET['patient_id'];
-            $sql = "SELECT * FROM sensor_indications WHERE patient_id = $patient_id";
-            $result = $conn->query($sql);
-    
-            // Generate an HTML page that includes a JavaScript function to cycle through the images
-            $page = '<html><head><title>Patient Images</title></head><body>';
-            $page .= '<div id="image-container"></div>';
-            $page .= '<div id="info-container"></div>';
-            $page .= '<script>';
-            $page .= 'var images = [';
-            $first = true;
-            while ($row = $result->fetch_assoc()) {
-                if (!$first) {
-                    $page .= ',';
-                }
-                $image_url = $row['image_url'];
-                $page .= '"' . $image_url . '"';
-                $first = false;
-            }
-            $page .= '];';
-            $page .= 'var patientIds = [';
-            $result->data_seek(0); // Reset the result set pointer to the beginning
-            $first = true;
-            while ($row = $result->fetch_assoc()) {
-                if (!$first) {
-                    $page .= ',';
-                }
-                $patient_id = $row['patient_id'];
-                $page .= '"' . $patient_id . '"';
-                $first = false;
-            }
-            $page .= '];';
-            $page .= 'var dates = [';
-            $result->data_seek(0); // Reset the result set pointer to the beginning
-            $first = true;
-            while ($row = $result->fetch_assoc()) {
-                if (!$first) {
-                    $page .= ',';
-                }
-                $created_at = $row['created_at'];
-                $page .= '"' . $created_at . '"';
-                $first = false;
-            }
-            $page .= '];';
-            $page .= 'var index = 0;';
-            $page .= 'function cycleImages() {';
-            $page .= 'if (index < images.length) {';
-            $page .= 'document.getElementById("image-container").innerHTML = "<img src=\'" + images[index] + "\' alt=\'Patient Image\'>";';
-            $page .= 'document.getElementById("info-container").innerHTML = "<span class=\'image-info\'>Patient ID: " + patientIds[index] + "<br>Created At: " + dates[index] + "</span>";';
-            $page .= 'index++;';
-            $page .= 'setTimeout(cycleImages, 5000);';
-            $page .= '}';
-            $page .= '}';
-            $page .= 'cycleImages();';
-            $page .= '</script>';
-            $page .= '</body></html>';
-    
-            // Output the HTML page
-            echo $page;
+function cyclePatients()
+{
+    if (isset($_GET['patient_id'])) {
+        global $conn;
+        $patient_id = $_GET['patient_id'];
+
+        // Use prepared statement to prevent SQL injection
+        $stmt = $conn->prepare("SELECT image_url, patient_id, created_at
+                                FROM sensor_indications
+                                WHERE patient_id = ?");
+        $stmt->bind_param("i", $patient_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $images = [];
+        $patientIds = [];
+        $dates = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $images[] = $row['image_url'];
+            $patientIds[] = $row['patient_id'];
+            $dates[] = $row['created_at'];
+        }
+
+        if (!empty($images)) {
+            echo '<script>';
+            echo 'var images = ' . json_encode($images) . ';';
+            echo 'var patientIds = ' . json_encode($patientIds) . ';';
+            echo 'var dates = ' . json_encode($dates) . ';';
+            echo 'var index = 0;';
+            echo 'function cycleImages() {';
+            echo 'if (index < images.length) {';
+            echo 'document.getElementById("image-container").innerHTML = "<img src=\'" + images[index] + "\' alt=\'Patient Image\'>";';
+            echo 'document.getElementById("info-container").innerHTML = "<span class=\'image-info\'>Patient ID: " + patientIds[index] + "<br>Created At: " + dates[index] + "</span>";';
+            echo 'index++;';
+            echo 'setTimeout(cycleImages, 5000);';
+            echo '}';
+            echo '}';
+            echo 'cycleImages();';
+            echo '</script>';
         }
     }
+}
+
 
     
     // Patient Information Table
@@ -605,6 +584,52 @@ function roomUpdate(){
     }
   }
 }
+
+
+
+
+//TEST
+
+// Function to retrieve all patients from the database
+function getAllPatients()
+{
+    global $conn;
+
+    $sql = "SELECT * FROM patients";
+    $result = mysqli_query($conn, $sql);
+
+    $patients = array();
+    if ($result && mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $patients[] = $row;
+        }
+    }
+
+    mysqli_free_result($result);
+
+    return $patients;
+}
+
+// Function to retrieve image URLs for a specific patient
+function getPatientImages($patientId)
+{
+    global $conn;
+
+    $sql = "SELECT image_url FROM sensor_indications WHERE patient_id = '$patientId'";
+    $result = mysqli_query($conn, $sql);
+
+    $images = array();
+    if ($result && mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $images[] = $row['image_url'];
+        }
+    }
+
+    mysqli_free_result($result);
+
+    return $images;
+}
+
 
 
 ?>

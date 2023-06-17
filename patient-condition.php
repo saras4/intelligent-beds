@@ -2,43 +2,43 @@
 <?php include "header.php";?>
 <div class="middle-condition">
   <div class="patient-container">
-    <div class="patient_cycle">
-      <?php cyclePatients()?>
-    </div>
+    <div id="image-container"></div>
+    <div id="info-container"></div>
   </div>
   <div class="patient-details">
-  <div class="big-font"> Patient Information</div>
-  <table>
-    <tr>
+    <div class="big-font">Patient Information</div>
+    <table>
+      <tr>
         <th>First Name</th>
         <td><?php echo retrieveFN(); ?></td>
-    </tr>
-    <tr>
-        <th>Last name</th>
+      </tr>
+      <tr>
+        <th>Last Name</th>
         <td><?php echo retrieveLN()?></td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <th>AMKA</th>
         <td><?php echo retrieveAMKA()?></td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <th>Clinic</th>
         <td><?php echo retrieveClinic()?> </td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <th>Floor</th>
         <td><?php echo retrieveFloor()?> </td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <th>Room</th>
         <td><?php echo retrieveRoom()?> </td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <th>Bed ID</th>
         <td><?php echo retrieveBedid()?> </td>
-    </tr>
-</table>
-
+      </tr>
+    </table>
   </div>
 </div>
 <?php include "footer.php";?>
+
+<?php cyclePatients(); ?>

@@ -459,3 +459,8 @@ div.update_button input.button2 {
   margin-right: 35px;
   margin-bottom: 10px;
 }
+
+.control-page {
+  display: flex;
+  flex-wrap: wrap;
+}
