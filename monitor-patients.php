@@ -15,7 +15,7 @@
 
   </div>
   <div class="button-monitor-patients">
-  <a href="monitor-all-patients.php" class="button2">Monitor all patients</a>
+  <a href="monitor-all-patients.php" class="button2">Monitor all</a>
   </div>
   <table>
     <tr>
