@@ -460,8 +460,38 @@ div.update_button input.button2 {
   margin-bottom: 10px;
 }
 
+/* ... (existing styles) ... */
+
+.scroll-container {
+  flex: 1; /* Fill remaining space between header and footer */
+  overflow-y: auto; /* Enable scrolling if content overflows the container */
+}
+
 .control-page {
   display: flex;
   flex-wrap: wrap;
+}
+
+/* ... (existing styles) ... */
+
+
+
+/* Monitor all patients style */
+.patient-card {
+  display: flex;
+  flex-direction: column;
+  margin: 20px; /* Reduced margin for smaller spacing */
+  border-radius: 5px 5px 0 0;
+  border: 8px solid #144272;
+  padding: 10px;
+  text-align: center;
+  background-color: #DBDFEA;
+  max-width: 300px; /* Limiting the maximum width */
+}
+
+.patient-image-container img {
+  height: 200px; /* Reduced image height */
+  width: auto; /* Auto width to maintain aspect ratio */
+  border-radius: 5px;
 }
 
