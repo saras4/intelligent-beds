@@ -12,10 +12,9 @@
        <button type="submit"><img src="images/search.png"></button>
       </form>
     </div>
-
   </div>
   <div class="button-monitor-patients">
-  <a href="monitor-all-patients.php" class="button2">Monitor all</a>
+    <a href="monitor-all-patients.php" class="button2">Monitor all</a>
   </div>
   <table>
     <tr>

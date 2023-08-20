@@ -460,8 +460,6 @@ div.update_button input.button2 {
   margin-bottom: 10px;
 }
 
-/* ... (existing styles) ... */
-
 .scroll-container {
   flex: 1; /* Fill remaining space between header and footer */
   overflow-y: auto; /* Enable scrolling if content overflows the container */
@@ -471,10 +469,6 @@ div.update_button input.button2 {
   display: flex;
   flex-wrap: wrap;
 }
-
-/* ... (existing styles) ... */
-
-
 
 /* Monitor all patients style */
 .patient-card {
