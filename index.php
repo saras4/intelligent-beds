@@ -31,7 +31,7 @@
   <a href="beds.php">
   <div class="options">  
     <img src="icons/hospital-bed.png" alt="manage beds"> 
-    <h3>Manage beds</h3>
+    <h3>Manage Beds</h3>
   </div>
   </a>
 

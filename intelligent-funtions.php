@@ -6,6 +6,8 @@
 
 <?php 
 
+// START OF monitor-patients.php  FUNCTIONS
+
 
 function numberOfPatients() {
   global $conn;
@@ -45,30 +47,33 @@ function patientTable(){
 }
 
 
+// END OF monitor-patients.php  FUNCTIONS
 
-    // beds
-    function addBed() {
-      if (isset($_POST["submit"])) {
-        global $conn;
-        $clinic = mysqli_real_escape_string($conn, $_POST['clinic']);
-        $floor = mysqli_real_escape_string($conn, $_POST['floor']);
-        $room = mysqli_real_escape_string($conn, $_POST['room']);
-        
-        $query = "INSERT INTO beds (clinic, floor, room)";
-        $query .= " VALUES ('$clinic', '$floor', '$room')";
-    
-        $result = mysqli_query($conn, $query);
-    
-        if (!$result) {
-          die('query failed');
-        } else {
-          // Redirect using JavaScript(getting error with header redirection)
-          echo '<script>window.location.href = "beds.php";</script>';
-          exit;
-        }
+
+
+
+
+
+// START OF newbed.php  FUNCTIONS
+function addBed() {
+  if (isset($_POST["submit"])) {
+    global $conn;
+    $clinic = mysqli_real_escape_string($conn, $_POST['clinic']);
+    $floor = mysqli_real_escape_string($conn, $_POST['floor']);
+    $room = mysqli_real_escape_string($conn, $_POST['room']);
+    $query = "INSERT INTO beds (clinic, floor, room)";
+    $query .= " VALUES ('$clinic', '$floor', '$room')";
+    $result = mysqli_query($conn, $query);
+    if (!$result) {
+      die('query failed');
+    } else {
+        echo '<script>window.location.href = "beds.php";</script>'; // Redirect using JavaScript(getting error with header redirection)
+        exit;
       }
-    }
-    
+  }
+}
+// END OF newbed.php  FUNCTIONS
+ 
 
 
 function fetchBed(){
@@ -370,7 +375,7 @@ function patientTable2(){
 
 
 
-
+// START OF beds.php  FUNCTIONS
 function bedTable(){
 
       global $conn;
@@ -410,6 +415,7 @@ function bedTable(){
       // close connection
       mysqli_close($conn);
         }
+// END OF beds.php  FUNCTIONS
 
 
         
@@ -629,7 +635,4 @@ function getPatientImages($patientId)
 
     return $images;
 }
-
-
-
 ?>

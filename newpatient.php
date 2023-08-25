@@ -1,11 +1,29 @@
 <?php include "intelligent-funtions.php";?>
-<?php 
-  addPatient();
-?>
+<?php addPatient(); ?>
 
-<?php include "header.php";?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Inspect</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo"> <a href="index.php">Inspect System </a></div>
+    <div class="header-links">
+      <ul>
+        <li><a href="beds.php">Manage Beds</a></li>
+        <li><a href="monitor-patients.php">Monitor Patients</a></li>
+      </ul>
+    </div>
+  </div>
 <div class="wrapper">
-  <div class="big-font">Please add the patients info</div>
+  <div class="big-font">Please fill patient's information</div>
   <div class = "form">
     <form action="newpatient.php" method="post">
 
@@ -30,15 +48,6 @@
         <label for="age">Age</label>
         <input type="number" name="age" required class="input" oninput="javascript: if (this.value.length > 3) this.value = this.value.slice(0, 3);">
       </div>
-
-
-
-
-
-
-
-
-
       <div class="input_field">
         <label for="bed_id">Bed</label>
         <select name="bed_id" class="input">

@@ -61,7 +61,7 @@ html {
 .introduction {
   display: flex;
   justify-content: space-around;
-  margin: 15px;
+  margin: 40px;
   gap: 15px;
   flex-grow: 0 1 auto;
 }
@@ -164,28 +164,40 @@ input[type="number"] {
 
 table {
   border-collapse: collapse;
-  margin: 40px;
-  margin-top: 0;
+  margin: 0 auto; /* Center the table horizontally */
   font-size: 0.9em;
   border-radius: 5px 5px 0 0;
+  table-layout: fixed;
 }
 
 .table-container {
   max-height: 400px;
-  /* Set the desired height for the table container */
   overflow-y: auto;
+  align-self: center;
 }
+.table-container table{
+  width: 89%;
+  margin: auto;
+
+}
+.table-container table td {
+  overflow: hidden;
+  /* overflow-wrap: break-word;  */
+}
+
 
 table thead tr {
   background-color: #144272;
   color: #edeef7;
-  text-align: left;
+  text-align: center;
   font-weight: bold;
 }
 
 table th,
 table td {
   padding: 12px 15px;
+  text-align: center;
+
 }
 
 /* Table head corners curved */
@@ -452,14 +464,10 @@ div.update_button input.button2 {
 
 .button-monitor-patients {
   display: flex;
-  flex-direction: row-reverse;
-}
-
-.button-monitor-patients a{
-  margin-right: 35px;
+  justify-content: flex-end;
+  margin-right: 40px;
   margin-bottom: 10px;
 }
-
 .scroll-container {
   flex: 1; /* Fill remaining space between header and footer */
   overflow-y: auto; /* Enable scrolling if content overflows the container */
@@ -488,4 +496,5 @@ div.update_button input.button2 {
   width: auto; /* Auto width to maintain aspect ratio */
   border-radius: 5px;
 }
+
 
