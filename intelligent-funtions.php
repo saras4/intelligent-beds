@@ -157,7 +157,7 @@ function cyclePatients()
             echo 'function cycleImages() {';
             echo 'if (index < images.length) {';
             echo 'document.getElementById("image-container").innerHTML = "<img src=\'" + images[index] + "\' alt=\'Patient Image\'>";';
-            echo 'document.getElementById("info-container").innerHTML = "<span class=\'image-info\'>Patient ID: " + patientIds[index] + "<br>Created At: " + dates[index] + "</span>";';
+            echo 'document.getElementById("info-container").innerHTML = "<span class=\'image-info\'>Created At: " + dates[index] + "</span>";';
             echo 'index++;';
             echo 'setTimeout(cycleImages, 5000);';
             echo '}';

@@ -23,7 +23,7 @@
     </div>
   </div>
 <div class="wrapper">
-  <div class="big-font">Update Patient Information</div>
+  <div class="big-font">Update Patient's Information</div>
   <div class="form">
     <form action="update.php" method="post">
 

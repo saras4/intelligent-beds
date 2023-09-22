@@ -33,7 +33,7 @@
         <td><?php echo retrieveRoom()?> </td>
       </tr>
       <tr>
-        <th>Bed ID</th>
+          <th>Bed ID</th>
         <td><?php echo retrieveBedid()?> </td>
       </tr>
     </table>
