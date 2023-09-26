@@ -1,6 +1,5 @@
 <?php
 include "db.php";
-
 if (isset($_GET['amka'])) {
     global $conn;
     $amka = $_GET['amka'];
@@ -19,5 +18,4 @@ if (isset($_GET['amka'])) {
         exit();
     }
 }
-
 ?>

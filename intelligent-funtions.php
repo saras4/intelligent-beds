@@ -81,7 +81,6 @@ function fetchBed(){
   // Query to fetch only the beds that are unassigned
   $query = "SELECT id FROM beds WHERE id NOT IN (SELECT bed_id FROM patients)";
   $result = mysqli_query($conn, $query);
-  
   while($row = mysqli_fetch_assoc($result)){
     $id = $row['id'];
     echo "<option value='$id'>$id</option>";
@@ -98,25 +97,23 @@ function addPatient() {
     $age = mysqli_real_escape_string($conn, $_POST['age']);
     $bed_id = mysqli_real_escape_string($conn, $_POST['bed_id']);
 
-    // Check if the amka (primary key) already exists in the database
+    // Check if the AMKA already exists in the database
     $checkQuery = "SELECT * FROM patients WHERE amka = '$amka'";
     $checkResult = mysqli_query($conn, $checkQuery);
-
     if (mysqli_num_rows($checkResult) > 0) {
       // Primary key already exists, display an error message
-      echo "Error: The primary key (AMKA) is already taken.";
-      return; // Exit the function without executing the insertion
+      echo "<script>
+              alert('AMKA already taken');
+              window.location.href = 'patients.php';
+            </script>";
     }
-
     $query = "INSERT INTO patients (amka, first_name, last_name, age, bed_id)";
     $query .= " VALUES ('$amka', '$first_name', '$last_name', '$age', '$bed_id')";
-
     $result = mysqli_query($conn, $query);
 
     if (!$result) {
       die('Query failed');
     } else {
-      // Redirect using JavaScript (getting error with header redirection)
       echo '<script>window.location.href = "patients.php";</script>';
       exit;
     }
@@ -129,8 +126,6 @@ function cyclePatients()
     if (isset($_GET['patient_id'])) {
         global $conn;
         $patient_id = $_GET['patient_id'];
-
-        // Use prepared statement to prevent SQL injection
         $stmt = $conn->prepare("SELECT image_url, patient_id, created_at
                                 FROM sensor_indications
                                 WHERE patient_id = ?");
@@ -358,7 +353,6 @@ function patientTable2(){
             </tr>';
     }
   }
-  
   else {
     echo "No results";
   }
@@ -427,7 +421,6 @@ function bedTable(){
 function updatePatient()
 {
   global $conn;
-
   if(isset($_POST["submit"])){
     $amka = mysqli_real_escape_string($conn,$_POST['amka']);
     $first_name = mysqli_real_escape_string($conn,$_POST['first_name']);
@@ -441,12 +434,10 @@ function updatePatient()
     $query .= "bed_id = '$bed_id' ";
     $query .= "WHERE amka = '$amka'";
     $result = mysqli_query($conn,$query);
-  
     if (!$result) {
       die('Query failed: ' . mysqli_error($conn));
     } 
     else {
-      // Redirect using JavaScript(getting error with header redirection)
       echo '<script>window.location.href = "patients.php";</script>';
       exit;
     }
@@ -594,7 +585,6 @@ function roomUpdate(){
 
 
 
-//TEST
 
 // Function to retrieve all patients from the database
 function getAllPatients()
