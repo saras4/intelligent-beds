@@ -12,26 +12,32 @@
         <th>First Name</th>
         <td><?php echo retrieveFN(); ?></td>
       </tr>
+
       <tr>
         <th>Last Name</th>
         <td><?php echo retrieveLN()?></td>
       </tr>
+
       <tr>
         <th>AMKA</th>
         <td><?php echo retrieveAMKA()?></td>
       </tr>
+
       <tr>
         <th>Clinic</th>
         <td><?php echo retrieveClinic()?> </td>
       </tr>
+
       <tr>
         <th>Floor</th>
         <td><?php echo retrieveFloor()?> </td>
       </tr>
+
       <tr>
         <th>Room</th>
         <td><?php echo retrieveRoom()?> </td>
       </tr>
+      
       <tr>
           <th>Bed ID</th>
         <td><?php echo retrieveBedid()?> </td>
