@@ -25,7 +25,7 @@
 <div class="wrapper">
   <div class="big-font">Please fill patient's information</div>
   <div class = "form">
-    <form action="newpatient.php" method="post">
+    <form action="newpatient.php" method="post" autocomplete="off">
 
       <div class="input_field">
         <label for="amka">AMKA</label>

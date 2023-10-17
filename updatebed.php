@@ -26,7 +26,7 @@
 <div class="wrapper">
   <div class="big-font">Update Patient Information</div>
   <div class="form">
-    <form action="updatebed.php" method="post">
+    <form action="updatebed.php" method="post" autocomplete="off">
 
     <div class="input_field">
     <label for="id"> Bed id</label>

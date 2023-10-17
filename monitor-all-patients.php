@@ -4,9 +4,7 @@
 <div class="scroll-container">
   <div class="control-page">
     <?php
-    // Retrieve the list of patients
     $patients = getAllPatients();
-
     if (!empty($patients)) {
       foreach ($patients as $patient) {
         $patientId = $patient['amka'];

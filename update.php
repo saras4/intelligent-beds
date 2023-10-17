@@ -25,7 +25,7 @@
 <div class="wrapper">
   <div class="big-font">Update Patient's Information</div>
   <div class="form">
-    <form action="update.php" method="post">
+    <form action="update.php" method="post" autocomplete="off">
 
     <div class="input_field">
     <label for="ΑΜΚΑ">ΑΜΚΑ</label>
